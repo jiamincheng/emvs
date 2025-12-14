@@ -1,0 +1,7 @@
+set(dvs_simulator_py_SETUP_PY_SETUP_MODULE "distutils.core")
+set(dvs_simulator_py_SETUP_PY_VERSION "0.0.0")
+set(dvs_simulator_py_SETUP_PY_SCRIPTS "scripts")
+set(dvs_simulator_py_SETUP_PY_PACKAGES "dvs_simulator_py")
+set(dvs_simulator_py_SETUP_PY_PACKAGE_DIRS "src/dvs_simulator_py")
+set(dvs_simulator_py_SETUP_PY_MODULES "")
+set(dvs_simulator_py_SETUP_PY_MODULE_DIRS "")

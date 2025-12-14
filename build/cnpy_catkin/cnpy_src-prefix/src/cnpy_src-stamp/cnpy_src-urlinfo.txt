@@ -1,0 +1,3 @@
+repository='external project URL'
+module='https://github.com/rogersce/cnpy/archive/4e8810b1a8637695171ed346ce68f6984e585ef4.zip'
+tag='MD5=5d31154534fb738bd5721ac1604a1ecf'

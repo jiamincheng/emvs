@@ -1,0 +1,1 @@
+cmd='cd;../cnpy_src;&&;cmake;.;-G;Unix Makefiles;-DCMAKE_INSTALL_PREFIX:PATH=/home/jiamin/emvs_ws/devel'

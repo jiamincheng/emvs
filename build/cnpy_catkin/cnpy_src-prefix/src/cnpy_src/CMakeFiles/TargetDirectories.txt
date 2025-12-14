@@ -1,0 +1,9 @@
+/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src/CMakeFiles/install/strip.dir
+/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src/CMakeFiles/edit_cache.dir
+/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src/CMakeFiles/install/local.dir
+/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src/CMakeFiles/example1.dir
+/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src/CMakeFiles/cnpy-static.dir
+/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src/CMakeFiles/install.dir
+/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src/CMakeFiles/list_install_components.dir
+/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src/CMakeFiles/rebuild_cache.dir
+/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src/CMakeFiles/cnpy.dir

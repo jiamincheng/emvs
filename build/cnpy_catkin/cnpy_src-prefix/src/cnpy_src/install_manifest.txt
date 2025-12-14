@@ -1,0 +1,6 @@
+/home/jiamin/emvs_ws/devel/lib/libcnpy.so
+/home/jiamin/emvs_ws/devel/lib/libcnpy.a
+/home/jiamin/emvs_ws/devel/include/cnpy.h
+/home/jiamin/emvs_ws/devel/bin/mat2npz
+/home/jiamin/emvs_ws/devel/bin/npy2mat
+/home/jiamin/emvs_ws/devel/bin/npz2mat

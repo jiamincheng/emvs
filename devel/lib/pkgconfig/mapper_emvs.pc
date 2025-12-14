@@ -1,0 +1,8 @@
+prefix=/home/jiamin/emvs_ws/devel
+
+Name: mapper_emvs
+Description: Description of mapper_emvs
+Version: 0.0.0
+Cflags: -I/home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/include
+Libs: -L${prefix}/lib -lmapper_emvs
+Requires: roscpp sensor_msgs dvs_msgs camera_info_manager image_geometry minkindr cartesian3dgrid rosbag glog_catkin gflags_catkin pcl_ros

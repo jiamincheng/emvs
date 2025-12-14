@@ -1,0 +1,74 @@
+source /opt/ros/noetic/setup.bash
+source ~/emvs_ws/devel/setup.bash
+
+
+sudo apt update
+sudo apt install curl
+
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros1-latest.list'
+
+sudo apt install curl -y
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+
+sudo apt update
+
+
+
+source ~/emvs_ws/devel/setup.bash
+
+mkdir -p ~/emvs_ws/src
+cd ~/emvs_ws
+
+catkin config --init --mkdirs --extend /opt/ros/noetic --merge-devel --cmake-args -DCMAKE_BUILD_TYPE=Release
+
+jiamin@computer:~/emvs_ws$ cd ~/emvs_ws/src
+jiamin@computer:~/emvs_ws/src$ git clone https://github.com/uzh-rpg/rpg_emvs.git
+
+Command 'git' not found, but can be installed with:
+
+sudo apt install git
+
+cd ~/emvs_ws/src
+jiamin@computer:~/emvs_ws/src$ sed -i 's/git@github.com:/https:\/\/github.com\//g' rpg_emvs/dependencies.yaml
+jiamin@computer:~/emvs_ws/src$ vcs-import < rpg_emvs/dependencies.yaml
+........
+=== ./catkin_simple (git) ===
+Cloning into '.'...
+=== ./cnpy (git) ===
+Cloning into '.'...
+=== ./eigen_catkin (git) ===
+Cloning into '.'...
+=== ./eigen_checks (git) ===
+Cloning into '.'...
+=== ./gflags_catkin (git) ===
+Cloning into '.'...
+=== ./glog_catkin (git) ===
+Cloning into '.'...
+=== ./minkindr (git) ===
+Cloning into '.'...
+=== ./rpg_dvs_ros (git) ===
+Cloning into '.'...
+jiamin@computer:~/emvs_ws/src$ 
+
+cd ~/emvs_ws
+catkin build mapper_emvs
+
+source ~/emvs_ws/devel/setup.bash
+
+roscd mapper_emvs
+
+rosrun mapper_emvs run_emvs --bag_filename=/home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/shapes_6dof.bag --flagfile=cfg/shapes_6dof.conf
+
+shapes_6dof
+
+wget http://rpg.ifi.uzh.ch/datasets/davis/shapes_6dof.bag
+wget http://rpg.ifi.uzh.ch/datasets/davis/shapes_6dof.bag
+wget http://rpg.ifi.uzh.ch/datasets/davis/shapes_6dof.bag
+wget http://rpg.ifi.uzh.ch/datasets/davis/shapes_6dof.bag
+
+
+python3 scripts/visualize_dsi_volume.py -i /home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/shapes_6dof/dsi.npy
+python3 scripts/visualize_dsi_slices.py -i /home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/shapes_6dof/dsi.npy
+
+python3 scripts/visualize_pointcloud.py -i /home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/shapes_6dof/pointcloud.pcd
+

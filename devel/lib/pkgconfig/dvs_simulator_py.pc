@@ -1,0 +1,8 @@
+prefix=/home/jiamin/emvs_ws/devel
+
+Name: dvs_simulator_py
+Description: Description of dvs_simulator_py
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

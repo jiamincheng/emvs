@@ -1,0 +1,8 @@
+prefix=/home/jiamin/emvs_ws/devel
+
+Name: cnpy_catkin
+Description: Description of cnpy_catkin
+Version: 0.0.0
+Cflags: -I/home/jiamin/emvs_ws/devel/include
+Libs: -L${prefix}/lib -lcnpy_catkin
+Requires: 

@@ -1,0 +1,79 @@
+x: 71
+y: 40
+ts:
+  secs: 1461581617
+  nsecs: 661107335
+polarity: True
+
+
+x: 236
+y: 111
+ts: 1461581617.661108335
+polarity: False
+
+
+cd ~/emvs_ws
+catkin build mapper_emvs
+
+source ~/emvs_ws/devel/setup.bash
+
+roscd mapper_emvs
+
+
+
+rosbag info /home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/boxes_6dof.bag | grep -i pose
+
+
+
+boxes_6dof
+dynamic_6dof
+shapes_6dof
+slider_depth
+
+rosrun mapper_emvs run_emvs --bag_filename=/home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/boxes_6dof.bag --flagfile=cfg/boxes_6dof.conf
+
+rosrun mapper_emvs run_emvs --bag_filename=/home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/dynamic_6dof.bag --flagfile=cfg/dynamic_6dof.conf
+
+rosrun mapper_emvs run_emvs --bag_filename=/home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/shapes_6dof.bag --flagfile=cfg/shapes_6dof.conf
+
+rosrun mapper_emvs run_emvs --bag_filename=/home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/slider_depth.bag --flagfile=cfg/slider_depth.conf
+
+
+方案 B：Temporal Density Filtering（去掉“孤立事件”）
+
+如果一个事件前后 0.5ms 内没有邻居事件，就当成噪声丢掉。
+
+
+⭐ 方案 C：Spatial filtering（空间密度）
+
+去掉“孤立 pixel”的事件：
+
+原理：
+如果一个事件周围 3×3 区域没有其他事件 → 丢掉
+
+但需要空间邻接，需要 hash 或 grid。
+实现稍微复杂，不推荐你现在做。
+
+
+最近邻 NN	只给 1 个最近的格子	最差（很粗糙）
+双线性 Bilinear	平面上的 4 个格子	中等（更稳定）
+三线性 Trilinear	3D 里 8 个 voxel	最好（超平滑）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

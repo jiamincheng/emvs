@@ -1,0 +1,11 @@
+# Hashes of file build rules.
+34c7b18ae3d008b71a6257cf38fbbc62 CMakeFiles/clean_test_results
+151aeda2ae920398a5806821c5417898 CMakeFiles/cnpy_src
+54871747e19c77b84ef3826664fde1af CMakeFiles/cnpy_src-complete
+81e516d2bef0e30680aba68b6b4c90b4 cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-build
+70ce2d891fa010bc1304b25475262cbe cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-configure
+ed3a13caced004046b285765a81cea3f cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-download
+a06c1c574a7546c3dfb19ed64d29ddfc cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-install
+217abde957a975103361862b44cba47c cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-mkdir
+8ab4ab1ceafcb3fb20a5bbeb6840518e cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-patch
+671a61199f136ef55dd8c387dd68f5cd cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-update

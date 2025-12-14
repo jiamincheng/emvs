@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/jiamin/emvs_ws/build/cnpy_catkin/CMakeFiles/cnpy_src"
+		},
+		{
+			"file" : "/home/jiamin/emvs_ws/build/cnpy_catkin/CMakeFiles/cnpy_src.rule"
+		},
+		{
+			"file" : "/home/jiamin/emvs_ws/build/cnpy_catkin/CMakeFiles/cnpy_src-complete.rule"
+		},
+		{
+			"file" : "/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-install.rule"
+		},
+		{
+			"file" : "/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-mkdir.rule"
+		},
+		{
+			"file" : "/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-download.rule"
+		},
+		{
+			"file" : "/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-update.rule"
+		},
+		{
+			"file" : "/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-patch.rule"
+		},
+		{
+			"file" : "/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-configure.rule"
+		},
+		{
+			"file" : "/home/jiamin/emvs_ws/build/cnpy_catkin/cnpy_src-prefix/src/cnpy_src-stamp/cnpy_src-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"cnpy_src"
+		],
+		"name" : "cnpy_src"
+	}
+}

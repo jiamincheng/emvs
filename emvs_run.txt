@@ -1,0 +1,92 @@
+先 clone ESIM + 编译/安装 + 生成一个简单场景（比如一个平面 + 相机平移），确认输出包括 depth + events。
+
+把 ESIM 输出当作 input 给 mapper_emvs，然后跑深度重建 + error 评估 — 这样你能完整复现实验流程。
+
+
+roscd mapper_emvs
+
+rosrun mapper_emvs run_emvs  --bag_filename=/home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/simulation_3planes/simulation_3planes_emvs.bag  --flagfile=cfg/simulation_3planes.conf
+
+
+cd ~/emvs_ws/src/rpg_emvs/mapper_emvs/data/simulation_3planes
+python3 generate_synthetic_rosbag_fixed.py
+
+
+
+wget http://rpg.ifi.uzh.ch/datasets/davis/simulation_3planes.bag
+wget http://rpg.ifi.uzh.ch/datasets/davis/simulation_3walls.bag
+
+boxes_6dof
+dynamic_6dof
+shapes_6dof
+slider_depth
+
+
+source ~/emvs_ws/devel/setup.bash
+
+roscd mapper_emvs
+
+rosrun mapper_emvs run_emvs --bag_filename=/home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/simulation_3planes/simulation_3planes_emvs.bag --flagfile=cfg/boxes_6dof.conf
+
+rosrun mapper_emvs run_emvs --bag_filename=/home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/simulation_3planes_emvs.bag --flagfile=cfg/simulation_3planes.conf
+
+rosrun mapper_emvs run_emvs --bag_filename=/home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/shapes_6dof.bag --flagfile=cfg/shapes_6dof.conf
+
+python3 scripts/visualize_dsi_volume.py -i /home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/shapes_6dof/dsi.npy
+python3 scripts/visualize_dsi_slices.py -i /home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/data/shapes_6dof/dsi.npy
+
+python3 scripts/visualize_pointcloud.py -i /home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/pointcloud.pcd
+
+python3 scripts/visualize_pointcloud.py -i /home/jiamin/emvs_ws/src/rpg_emvs/mapper_emvs/pointcloud.pcd
+
+data/simulation_3planes/emvs_pointcloud
+mkdir ../depthmaps_png
+
+python3 - << 'EOF'
+import OpenEXR, Imath, numpy as np, imageio, glob
+
+files = sorted(glob.glob("*.exr"))
+
+min_d, max_d = 1e9, -1e9
+
+for f in files:
+    exr = OpenEXR.InputFile(f)
+    dw = exr.header()['dataWindow']
+    w = dw.max.x - dw.min.x + 1
+    h = dw.max.y - dw.min.y + 1
+    pt = Imath.PixelType(Imath.PixelType.FLOAT)
+    Z = exr.channel('Z', pt)
+    depth = np.frombuffer(Z, dtype=np.float32).reshape(h, w)
+
+    min_d = min(min_d, depth.min())
+    max_d = max(max_d, depth.max())
+
+print("Global min =", min_d, "max =", max_d)
+
+for f in files:
+    exr = OpenEXR.InputFile(f)
+    dw = exr.header()['dataWindow']
+    w = dw.max.x - dw.min.x + 1
+    h = dw.max.y - dw.min.y + 1
+    pt = Imath.PixelType(Imath.PixelType.FLOAT)
+    Z = exr.channel('Z', pt)
+    depth = np.frombuffer(Z, dtype=np.float32).reshape(h, w)
+
+    norm = (depth - min_d) / (max_d - min_d)
+    png = (norm * 255).clip(0,255).astype(np.uint8)
+
+    out = f.replace(".exr", ".png")
+    imageio.imwrite("../depthmaps_png/" + out, png)
+
+print("Finished converting to PNG!")
+EOF
+
+
+python3 emvs_synth.py --dataset simulation_3walls
+
+
+
+evaluate_depth_error.py
+
+
+

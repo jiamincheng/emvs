@@ -1,0 +1,8 @@
+prefix=/home/jiamin/emvs_ws/install
+
+Name: cartesian3dgrid
+Description: Description of cartesian3dgrid
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lcartesian3dgrid
+Requires: cv_bridge cnpy_catkin
