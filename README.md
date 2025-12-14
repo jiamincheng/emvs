@@ -144,19 +144,19 @@ Using EMVS gives unsatisfactory results likely because the synthetic scenes have
 
 #### **True / False Event Filtering**
 
-![img2_1](C:\Users\mrozn\Downloads\img2_3.pn)
+![img2_1](img/img2_3.pn)
 
 True/False event filtering produces almost the same 3D reconstruction as using all events, while cutting the event count by about 50% and significantly improving efficiency.
 
 #### **Temporal Density Filtering**
 
-![img2_1](C:\Users\mrozn\Downloads\img5.png)
+![img2_1](img/img5.png)
 
 Temporal density filtering drops isolated noise events (no neighbor within ±0.5 ms), but the improvement is limited in my results.
 
 #### **Voxel Voting Methods**
 
-![img2_1](C:\Users\mrozn\Downloads\img6.png)
+![img2_1](img/img6.png)
 NN voting is fastest but tends to produce noisier, less stable depth since each event votes to only one voxel, while bilinear and especially trilinear voting spread evidence to neighboring voxels to smooth the DSI and improve depth quality (at the cost of more computation).
 
 
