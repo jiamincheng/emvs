@@ -99,6 +99,33 @@ Output will be generated in the same directory (`mapper_emvs/`). Typical outputs
 - `semidense_mask.png`
 - `pointcloud.pcd` (reconstructed point cloud)
 
+
+## Improvements
+
+I implemented three practical improvements on top of the EMVS pipeline.
+
+### 1) Polarity Filtering
+**File:** `data_loading.cpp`  
+**Function:** `parse_rosbag(..., std::vector<dvs_msgs::Event>& events_, ...)`  
+
+All events are first pushed into `events_`. After loading finishes, I apply **polarity filtering** by keeping only events with the desired polarity (e.g., only ON events or only OFF events). This reduces the number of events and speeds up the downstream DSI computation.
+
+### 2) Temporal Density Filtering
+**File:** `data_loading.cpp`  
+**Function:** `parse_rosbag(..., std::vector<dvs_msgs::Event>& events_, ...)`  
+
+After all events are collected in `events_`, I run a **temporal density filter**: isolated events without nearby neighbors within a small time window are removed. This suppresses noise events and improves depth quality.
+
+### 3) Optional Voting Strategy (NN / Bilinear / Trilinear)
+**File:** `mapper_emvs.cpp`  
+**Function:** `fillVoxelGrid()`  
+
+Voxel voting is implemented in `fillVoxelGrid()`. I added an option to switch between different voting strategies:
+- **Nearest-Neighbor (NN):** each event votes to the closest voxel (fastest)
+- **Bilinear:** vote is split across neighboring (x, y) voxels (smoother)
+- **Trilinear:** vote is split across (x, y, z) voxels (best quality)
+
+
 ## References
 
 - EMVS (base pipeline): https://github.com/uzh-rpg/rpg_emvs  
