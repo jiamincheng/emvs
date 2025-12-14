@@ -144,7 +144,7 @@ Using EMVS gives unsatisfactory results likely because the synthetic scenes have
 
 #### **True / False Event Filtering**
 
-![img2_1](img/img2_3.pn)
+![img2_1](img/img2_3.png)
 
 True/False event filtering produces almost the same 3D reconstruction as using all events, while cutting the event count by about 50% and significantly improving efficiency.
 
