@@ -121,6 +121,45 @@ Voxel voting is implemented in `fillVoxelGrid()`. I added an option to switch be
 - **Bilinear:** vote is split across neighboring (x, y) voxels (smoother)
 - **Trilinear:** vote is split across (x, y, z) voxels (best quality)
 
+## Results and Analysis
+
+I evaluated the EMVS on two simulated synthetic shapes (a **box** and a **sphere**). 
+
+![img2_1](img/img2_1.png)
+
+![img2_1](img/img2_2.png)
+
+### Quantitative Results
+
+| Scene          | Accuracy (m) | Completeness (m) | Chamfer (m) |                      F@0.05 |                      F@0.10 |
+| -------------- | -----------: | ---------------: | ----------: | --------------------------: | --------------------------: |
+| Box (better)   |        0.089 |            0.120 |       0.209 | 0.371<br>(P=0.501, R=0.295) | 0.705<br>(P=0.865, R=0.595) |
+| Sphere (worse) |        0.168 |            0.197 |       0.365 | 0.098<br>(P=0.180, R=0.068) | 0.255<br>(P=0.389, R=0.190) |
+
+*Quantitative point-cloud evaluation on synthetic shapes.*
+
+Using EMVS gives unsatisfactory results likely because the synthetic scenes have low texture so events are sparse/weak, and the evaluation is also biased since EMVS outputs an accumulated point cloud while the GT is taken from a single frame, so the mismatch can inflate the measured error.
+
+### Qualitative Results
+
+#### **True / False Event Filtering**
+
+![img2_1](C:\Users\mrozn\Downloads\img2_3.pn)
+
+True/False event filtering produces almost the same 3D reconstruction as using all events, while cutting the event count by about 50% and significantly improving efficiency.
+
+#### **Temporal Density Filtering**
+
+![img2_1](C:\Users\mrozn\Downloads\img5.png)
+
+Temporal density filtering drops isolated noise events (no neighbor within ±0.5 ms), but the improvement is limited in my results.
+
+#### **Voxel Voting Methods**
+
+![img2_1](C:\Users\mrozn\Downloads\img6.png)
+NN voting is fastest but tends to produce noisier, less stable depth since each event votes to only one voxel, while bilinear and especially trilinear voting spread evidence to neighboring voxels to smooth the DSI and improve depth quality (at the cost of more computation).
+
+
 
 ## References
 
